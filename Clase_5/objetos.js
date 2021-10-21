@@ -54,12 +54,12 @@ for(let i = 0 ; i < animales.length; i++){
 
 function arraySort(){
     const arrayAnimales = ["M.Ramirezzi", "P.Reticulata", "R. Octofasciata", "B.Splenders"];
-    
-    animales.sort();
 
-        for(let i = 0 ; i < arrayAnimales.length; i++){
-            console.log(animales[i].especie);
-        }
+    arrayAnimales.sort();
+    
+    for(let i = 0 ; i < arrayAnimales.length; i++){
+        console.log(arrayAnimales[i]);
+    }
 }
 
 // Deberia responder [B.Splenders - R. Octofasciata - P.Reticulata - M.Ramirezzi]
