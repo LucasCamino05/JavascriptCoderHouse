@@ -52,10 +52,14 @@ for(let i = 0 ; i < animales.length; i++){
 
 // Deberia responder [M.Ramirezzi - P.Reticulata - R. Octofasciata - B.Splenders]
 
-animales.sort();
+function arraySort(){
+    const arrayAnimales = ["M.Ramirezzi", "P.Reticulata", "R. Octofasciata", "B.Splenders"];
+    
+    animales.sort();
 
-for(let i = 0 ; i < animales.length; i++){
-    console.log(animales[i].especie)
+        for(let i = 0 ; i < arrayAnimales.length; i++){
+            console.log(animales[i].especie);
+        }
 }
 
 // Deberia responder [B.Splenders - R. Octofasciata - P.Reticulata - M.Ramirezzi]
