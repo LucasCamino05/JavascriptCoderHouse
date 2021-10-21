@@ -41,11 +41,24 @@ let pezBetta = new reinoAnimal("Animalia","Chordata","Actinopterygii","Perciform
 
 // Ingreso a array
 
-animales.push(pezRamirezzi);
-animales.push(pezLebiste);
-animales.push(pezBlueDempsey);
-animales.push(pezBetta);
+animales.push(pezRamirezzi); //4
+animales.push(pezLebiste); //3
+animales.push(pezBlueDempsey); // 2
+animales.push(pezBetta); // 1
 
+for(let i = 0 ; i < animales.length; i++){
+    console.log(animales[i].especie);
+}
+
+// Deberia responder [M.Ramirezzi - P.Reticulata - R. Octofasciata - B.Splenders]
+
+animales.sort();
+
+for(let i = 0 ; i < animales.length; i++){
+    console.log(animales[i].especie)
+}
+
+// Deberia responder [B.Splenders - R. Octofasciata - P.Reticulata - M.Ramirezzi]
 
 // Dominions de Peces 
 
@@ -70,24 +83,24 @@ if (reino == "animal"){
 
     switch (especie) {
         case "ramirezzi" :
-            alert(animales[0].reino);
-            alert(animales[0].phylum);
-            alert(animales[0].clase);
-            alert(animales[0].orden);
-            alert(animales[0].familia);
-            alert(animales[0].genero);
-            alert(animales[0].especie);
-            alert(animales[0].descripcion);
+            alert(animales[4].reino);
+            alert(animales[4].phylum);
+            alert(animales[4].clase);
+            alert(animales[4].orden);
+            alert(animales[4].familia);
+            alert(animales[4].genero);
+            alert(animales[4].especie);
+            alert(animales[4].descripcion);
             break;
         case "lebiste":
-            alert(animales[1].reino);
-            alert(animales[1].phylum);
-            alert(animales[1].clase);
-            alert(animales[1].orden);
-            alert(animales[1].familia);
-            alert(animales[1].genero);
-            alert(animales[1].especie);
-            alert(animales[1].descripcion);
+            alert(animales[3].reino);
+            alert(animales[3].phylum);
+            alert(animales[3].clase);
+            alert(animales[3].orden);
+            alert(animales[3].familia);
+            alert(animales[3].genero);
+            alert(animales[3].especie);
+            alert(animales[3].descripcion);
             break;
         case "bluedempsey" :
             alert(animales[2].reino);
@@ -100,19 +113,18 @@ if (reino == "animal"){
             alert(animales[2].descripcion);
             break;
         case "betta" :
-            alert(animales[3].reino);
-            alert(animales[3].phylum);
-            alert(animales[3].clase);
-            alert(animales[3].orden);
-            alert(animales[3].familia);
-            alert(animales[3].genero);
-            alert(animales[3].especie);
-            alert(animales[3].descripcion);
+            alert(animales[1].reino);
+            alert(animales[1].phylum);
+            alert(animales[1].clase);
+            alert(animales[1].orden);
+            alert(animales[1].familia);
+            alert(animales[1].genero);
+            alert(animales[1].especie);
+            alert(animales[1].descripcion);
             break;
         default: alert('No hay datos sobre esa especie');
             break;
     }
-    console.log(animales.length);
 }
 else{
     if (reino == "planta"){
