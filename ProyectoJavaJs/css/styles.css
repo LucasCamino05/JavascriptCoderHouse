@@ -1,26 +1,14 @@
 * {
   margin: 0;
   padding: 0;
-  background-color: rgba(0, 167, 8, 0.9);
   box-sizing: border-box; }
 
-.cuerpo {
+#cuerpo {
   display: flex;
-  flex-direction: column; }
-  .cuerpo .cuerpoProducto {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    margin: 1rem; }
-    .cuerpo .cuerpoProducto .descripcion {
-      text-align: center; }
-    .cuerpo .cuerpoProducto button {
-      width: 1rem; }
-    .cuerpo .cuerpoProducto .botonMas {
-      background-color: #0044ff; }
-    .cuerpo .cuerpoProducto .botonMenos {
-      background-color: #ff4400; }
+  flex-wrap: wrap;
+  justify-content: space-evenly; }
+  #cuerpo .card-body {
+    height: 15rem; }
 
 .footer {
   position: fixed;
