@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carreras</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <script>
+    // Objeto Canvas.
+    var canvas = document.getElementById('canvas');
+    
+    // Objeto Contexto 2D.
+    var Rxt = canvas.getContext('2d');
+    
+    Rxt.fillStyle = 'green';            // Contexto de color verde.
+    Rxt.fillRect(0, 0, 2000, 2000);     // Se rellena el contexto con el color verde.
+    
+    // Rotar Imagen.
+    //Rxt.rotate(.2);
+        
+    // Se crea una imagen.
+    var Img = document.createElement('img');
+    Img.src = 'assets/sonic.gif';
+    Img.onload = function () { 
+        alert('paso');
+        Rxt.drawImage(Img, 0, 0, 50, 50); 
+    }
+    var posicion = 0;
+    var down = false;
+
+    document.addEventListener('keydown', (event) =>{
+        console.log(event.key);
+        if (event.key == 'ArrowRight'){
+            
+            clear();
+            posicion +=10;
+            console.log('derecha',Img.x, Img.y);
+            Rxt.drawImage(Img, posicion, Img.y + 10, 50, 50); 
+            Img.x = Img.x + 10;
+        }
+    });
+
+    Rxt.canvas.addEventListener('mousedown', function () { 
+        down = true; 
+    }, false);
+    Rxt.canvas.addEventListener('mouseup', function () { 
+        down = false; 
+    }, false);
+    Rxt.canvas.addEventListener('mousemove', function (event) {
+        if (down){
+            //Rxt.translate(0, -50);
+            clear();
+            Rxt.drawImage(Img, event.clientX - this.offsetLeft,
+            event.clientY - this.offsetTop, 50, 50);
+            //Rxt.translate(0, 50);
+        }
+    }, false);
+    
+    // Funcion limpiar image.
+    function clear(){
+        Rxt.clearRect(0, 0, canvas.width, canvas.height);
+        Rxt.fillStyle = 'green';            // Contexto de color verde.
+        Rxt.fillRect(0, 0, 2000, 2000);     // Se rellena el contexto con el color verde.
+    }
+    </script>
+</body>
+</html>

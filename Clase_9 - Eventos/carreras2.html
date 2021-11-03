@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .body {
+            padding-top: 40px;
+            padding-left: 40px;
+        }
+ 
+        img#coche1 {
+           position: absolute;
+           width: 150px;
+           height: 150px;
+           top: 20%;
+           left: 2%;
+        }
+ 
+ 
+       .zona_boton {
+         text-align: center;
+         width: 100%;
+         margin-top: 240px;
+       }
+ 
+    </style>    
+    <title>Document</title>
+
+</head>
+<body>
+    <div class="body">
+        <header>
+            <div class="zona_boton">
+                <input type="button" onclick='setInterval("correr()",60)' onclick='correr()' value="A CORRER!">	
+                
+            </div>
+        </header>
+        <img id="coche1" src="assets/sonic.gif" alt="Este es mi coche">
+
+    </div>
+    
+    <script>	  
+        //seleccionar imágenes
+        var coche1 = document.getElementById("coche1");
+  
+        //posiciones iniciales
+        var x_coche1 = 0;
+
+        document.addEventListener('keydown', (event) =>{
+        console.log(event.key);
+            if (event.key == 'ArrowRight'){
+                if (x_coche1 <= 85 && x_coche1 >= 0) { //condición para que se mueva entre estos valores de la pantalla
+                    x_coche1 = x_coche1 + 2; //movimiento del valor x
+                    coche1.style.left = x_coche1 + "%"; //aplicar el valor obtenido al left del elemento
+                }
+            }
+            if (event.key == 'ArrowLeft'){
+                if (x_coche1 <= 85 && x_coche1 >= 0) { //condición para que se mueva entre estos valores de la pantalla
+                    x_coche1 = x_coche1 - 2; //movimiento del valor x
+                    coche1.style.left = x_coche1 + "%"; //aplicar el valor obtenido al left del elemento
+                }
+            }
+           
+            if (event.key == 'ArrowUp'){
+                var target = document.getElementById('coche1');
+                var player = target.animate([
+                    {transform: 'translate(0)'},
+                    {transform: 'translate(0px, -100px)'}
+                ], 200);
+                    player.addEventListener('finish', function() {
+                    target.style.transform = target.animate([
+                    {transform: 'translate(0px, -100px)'},
+                    {transform: 'translate(0)'}
+                    ], 200);
+                });
+
+
+                /*document.getElementById("coche1").style.transition = "all 5s";
+                console.log('antes',coche1.style.top);
+                coche1.style.top = coche1.style.top + "2%";
+                coche1.style.top = "20%";
+                /*if (x_coche1 <= 85 && x_coche1 >= 0) { //condición para que se mueva entre estos valores de la pantalla
+                    //x_coche1 = x_coche1 - 2; //movimiento del valor x
+                    //posicion original
+                    //var pos = coche1.style.top + 2;
+                    console.log('antes',coche1.style.top);
+                    /*coche1.style.top = "2%"; //aplicar el valor obtenido al left del elemento
+                    console.log('subio',coche1.style.bottom);
+                    coche1.style.top = "0%";
+                    console.log('despues',coche1.style.bottom);*/
+                    //console.log(coche1.style.top);
+                    //coche1.style.top = pos; //aplicar el valor obtenido al left del elemento
+                    //console.log(coche1.style.top);
+                //}
+            }              
+        });
+
+        function correr() {
+            console.log('hola');
+               //movimiento coche1
+            if (x_coche1 <= 85 && x_coche1 >= 0) { //condición para que se mueva entre estos valores de la pantalla
+                x_coche1 = x_coche1 + 2; //movimiento del valor x
+                coche1.style.left = x_coche1 + "%"; //aplicar el valor obtenido al left del elemento
+            }
+            else { //si no cumple la condición, es decir, se sale de los valores de la pantalla, vuelve a empezar
+                /*x_coche1=0; //posicion inicial
+                coche1.style.left = x_coche1 + "%"; //volvemos a aplicar el valor obtenido al left del elemento*/
+                console.log('Llego');
+                
+            }
+  
+
+        }
+    </script>    
+</body>
+</html>

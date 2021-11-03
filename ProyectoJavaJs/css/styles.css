@@ -3,12 +3,20 @@
   padding: 0;
   box-sizing: border-box; }
 
-#cuerpo {
+nav .container-fluid a {
+  color: black; }
+
+nav i {
+  font-size: xx-large; }
+
+header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly; }
-  #cuerpo .card-body {
-    height: 15rem; }
+  header .card {
+    height: fit-content; }
+    header .card img {
+      object-fit: cover; }
 
 .footer {
   position: fixed;

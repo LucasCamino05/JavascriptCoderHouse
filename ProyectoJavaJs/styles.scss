@@ -4,12 +4,26 @@
     box-sizing: border-box;
 }
 
-#cuerpo{
+nav{
+    .container-fluid{
+        a{
+            color: rgb(0, 0, 0);
+        }
+    }
+    i{
+        font-size: xx-large;
+    }
+}
+
+header{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    .card-body{
-        height: 15rem;
+    .card {
+        height: fit-content;
+        img{
+            object-fit: cover;
+        }
     }
 }
 
