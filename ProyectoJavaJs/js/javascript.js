@@ -1,6 +1,7 @@
 let boton = document.getElementById("btnFiltrar");
 
 boton.onclick = () => {
+    borrarHTML();
     filtroProductos();
 }
 
@@ -21,11 +22,9 @@ class productos{
         this.imagen = imagen;
         this.descripcion = descripcion;
     }
-
     sumaIva(){
         this.precio =  this.precio * 1.21 ; //Sumo IVA
     }
-
     vender(cantidad){
         this.stock = this.stock - cantidad;
     }
@@ -33,12 +32,12 @@ class productos{
 
 // en un futuro se borra todo.
 
-arrayProductos.push(new productos (1, "Arroz", 100, 60, "arroz.jpg","Arroz en grano, peso neto 1kg. pepe"));
-arrayProductos.push(new productos (2, "Fideos", 100, 80,"fideos.jpg","Paquete Tallarines 500gr, pepe"));
-arrayProductos.push(new productos (3, "Lentejas", 10, 150,"lentejas.jpg","Lentejas kg"));
-arrayProductos.push(new productos (4, "Porotos", 10, 140,"porotos.jpg","Porotos por kg"));
-arrayProductos.push(new productos (5, "Salsa Tomate", 50, 90,"salsaTomate.jpg","Caja salsa de tomate, peso 520gr"));
-arrayProductos.push(new productos (6, "Papa", 15, 75,"papa.jpg","Papas Fritas Lays, peso 226.6gr"));
+arrayProductos.push(new productos (0, "Arroz", 100, 60, "arroz.jpg","arroz en grano, peso neto 1kg. pepe"));
+arrayProductos.push(new productos (1, "Fideos", 100, 80,"fideos.jpg","Paquete de fideos tallarines de 500gr, pepe"));
+arrayProductos.push(new productos (2, "Lentejas", 10, 150,"lentejas.jpg","lentejas kg"));
+arrayProductos.push(new productos (3, "Porotos", 10, 140,"porotos.jpg","porotos por kg"));
+arrayProductos.push(new productos (4, "Salsa Tomate", 50, 90,"salsaTomate.jpg","Caja salsa de tomate, peso 520gr"));
+arrayProductos.push(new productos (5, "Papa", 15, 75,"papa.jpg","papas Fritas Lays, peso 226.6gr"));
 
 /* HTML Agregado con DOM y jQuery */
 
@@ -59,28 +58,44 @@ const mostrarStock = () => {
         `);
     }
 }
+const prodEncontrado = (x) =>{
+    $('#cuerpo').append(`
+        <div class="card text-center" style="width: 18rem;">
+            <img src="./multimedia/${arrayProductos[x].imagen}" class="card-img-top" id="imagen" alt="Img Not found">
+            <div class="card-body">
+                <h2 class="card-title">${arrayProductos[x].nombre}</h2>
+                <h5 class="card-subtitle mb-2 text-muted">${arrayProductos[x].descripcion}</h5>
+                <p class="card-text">$ ${arrayProductos[x].precio}</p>
+                <div class="btn-group" role="group" aria-label="Basic mixed styles example">             
+                    <button type="button" class="btn btn-success" id="agregar" onclick="">Agregar</button>
+                </div>
+            </div>
+        </div>
+        `);
+}
 
 let prodFiltro = arrayProductos;
 
-function filtroProductos(){
-    let palabraBuscada = $('#buscar');
-    console.log(palabraBuscada.val()); //compruebo que el boton funcioné
-
-    prodFiltro = arrayProductos.filter(elemento => elemento.nombre.includes(palabraBuscada.val()) || elemento.descripcion.includes(palabraBuscada.val()));
-
-    borrarHTML();
-    mostrarStock();
+const filtroProductos = () => {
+    let ingresoBuscador = $('#buscar').val();
+    ingresoBuscador = ingresoBuscador.toLowerCase();
+    // console.log(ingresoBuscador);
+    let prodFiltrado = arrayProductos.filter(a => a.nombre.includes(ingresoBuscador) || a.descripcion.includes(ingresoBuscador));
+    //console.log(prodFiltrado[0].id);
+    if (prodFiltrado != ""){
+        let x = prodFiltrado[0].id;
+        prodEncontrado(x);
+        return;
+    }
+    else{
+        alert('Producto '+ ingresoBuscador + ' no encontrado');
+        mostrarStock();
+    }
 }
 
 const borrarHTML = () => {
-    let header = document.getElementById('cuerpo');
-    document.body.removeChild(header);
-
-    header = document.createElement('header');
-    let a = document.createAttribute('id');
-    a.value = 'cuerpo';
-    header.setAttributeNode(a);
-    document.body.appendChild(header);
+    let header = $('#cuerpo');
+    header.empty();
 }
 
 const agregarBtn = (idProducto) => {
@@ -89,5 +104,4 @@ const agregarBtn = (idProducto) => {
     console.log(elemento)
     let cantidad = elemento.val() + 1;
     $('.carrito').append(cantidad);
-
 }
