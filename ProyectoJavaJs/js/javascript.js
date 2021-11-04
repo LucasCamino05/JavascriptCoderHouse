@@ -1,8 +1,26 @@
 let boton = document.getElementById("btnFiltrar");
-boton.addEventListener("click", filtroProductos);
+/* let inputBusqueda = document.getElementById('buscar'); */
+/* boton.addEventListener("click", filtroProductos); */
+boton.onclick = () => {
+    filtroProductos();
+}
 
+let btnAgregar = $('#agregar'); //Agregaria el producto al carrito, o almenos cambiaria el nro del carrito.
+btnAgregar.onclick = () => {
+    agregarBtn();
+}
+/* 
 let inputBusqueda = document.getElementById('buscar');
-inputBusqueda.addEventListener("keyup", buscarPorTecla);
+inputBusqueda.addEventListener("keyup", buscarPorTecla); 
+Por el momento voy a evitar usar el buscador por keyup.
+
+function buscarPorTecla() {
+    console.log(inputBusqueda.value);
+    if(inputBusqueda.value.length > 2){
+        filtroProductos()
+    }
+}
+*/
 
 /* let agregarCarrito = document.getElementById('agregar');
 agregarCarrito.addEventListener("click", ); */
@@ -37,6 +55,29 @@ arrayProductos.push(new productos (4, "Porotos", 10, 140,"porotos.jpg","Porotos 
 arrayProductos.push(new productos (5, "Salsa Tomate", 50, 90,"salsaTomate.jpg","Caja salsa de tomate, peso 520gr"));
 arrayProductos.push(new productos (6, "Papa", 15, 75,"papa.jpg","Papas Fritas Lays, peso 226.6gr"));
 
+/* HTML Agregado con DOM y jQuery */
+
+const mostrarStock = () => {
+    for (let x of arrayProductos){
+        $('#cuerpo').append(`
+        <div class="card text-center" style="width: 18rem;">
+            <img src="./multimedia/${x.imagen}" class="card-img-top" id="imagen" alt="Img Not found">
+            <div class="card-body">
+                <h2 class="card-title">${x.nombre}</h2>
+                <h5 class="card-subtitle mb-2 text-muted">${x.descripcion}</h5>
+                <p class="card-text">$ ${x.precio}</p>
+                <div class="btn-group" role="group" aria-label="Basic mixed styles example">             
+                    <button type="button" class="btn btn-success" id="agregar" onclick="">Agregar</button>
+                </div>
+            </div>
+        </div>
+        `);
+    }
+}
+
+/* 
+HTML Agregado con DOM sin jQuery
+
 const mostrarStock = () => {
     for (const producto of arrayProductos){
         let contenedor = document.createElement('div');
@@ -56,28 +97,22 @@ const mostrarStock = () => {
         `
         document.getElementById('cuerpo').appendChild(contenedor);
     }
-}
+} */
 
 /* quiero hacer una barra de busqueda. Necesito un input en mi nav que deje colocar una busqueda, esa busqueda la tengo que agarrar y filtrar en mi descripción, y en mi nombre de producto. */
 /* let boton = document.getElementById("btnFiltrar");
 boton.addEventListener("click", filtrarDatos); */
 
-function buscarPorTecla() {
-    console.log(inputBusqueda.value);
-    if(inputBusqueda.value.length > 2){
-        filtroProductos()
-    }
-}
-
 let prodFiltro = arrayProductos;
 
 function filtroProductos(){
-    let palabraBuscada = document.getElementById('buscar');
-    prodFiltro = arrayProductos.filter(elemento => elemento.nombre.includes(palabraBuscada.value) || elemento.descripcion.includes(palabraBuscada.value));
+    let palabraBuscada = $('#buscar');
+    console.log(palabraBuscada.val()); //compruebo que el boton funcioné
+
+    prodFiltro = arrayProductos.filter(elemento => elemento.nombre.includes(palabraBuscada.val()) || elemento.descripcion.includes(palabraBuscada.val()));
 
     borrarHTML();
-    mostrarStock(inputBusqueda);
-    //console.log(productosFiltrados);
+    mostrarStock();
 }
 
 const borrarHTML = () => {
@@ -89,4 +124,13 @@ const borrarHTML = () => {
     a.value = 'cuerpo';
     header.setAttributeNode(a);
     document.body.appendChild(header);
+}
+
+const agregarBtn = (idProducto) => {
+    console.log(idProducto);
+    let elemento = $('span');
+    console.log(elemento)
+    let cantidad = elemento.val() + 1;
+    $('.carrito').append(cantidad);
+
 }

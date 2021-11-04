@@ -18,4 +18,5 @@ let nombre = $('#nombre');
 const agregarNombre = () => {
         $('#tabla').prepend(`<li>${nombre.val()}</li>`)
 }
+
 let enviar = document.getElementById("enviar").addEventListener("click", agregarNombre);
