@@ -20,8 +20,8 @@ header{
     flex-wrap: wrap;
     justify-content: space-evenly;
     .card {
-        height: fit-content;
         img{
+            height: 15rem;
             object-fit: cover;
         }
     }

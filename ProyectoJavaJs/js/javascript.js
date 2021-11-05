@@ -1,9 +1,9 @@
-let boton = document.getElementById("btnFiltrar");
+/* let boton = document.getElementById("btnFiltrar");
 
 boton.onclick = () => {
     borrarHTML();
     filtroProductos();
-}
+} */
 
 //let btnAgregar = $('#agregar'); //Agregaria el producto al carrito, o almenos cambiaria el nro del carrito.
 /* btnAgregar.onclick = () => {
@@ -11,6 +11,7 @@ boton.onclick = () => {
 } */
 
 // Al clickear el boton añadir un objeto a un carrito y aumentar el valor del total a pagar.
+
 let arrayProductos = [];
 
 class productos{
@@ -44,21 +45,22 @@ arrayProductos.push(new productos (5, "Papa", 15, 75,"papa.jpg","papas Fritas La
 const mostrarStock = () => {
     for (let x of arrayProductos){
         $('#cuerpo').append(`
-        <div class="card text-center" style="width: 18rem;">
-            <img src="./multimedia/${x.imagen}" class="card-img-top" id="imagen" alt="Img Not found">
-            <div class="card-body">
-                <input type="hidden" id="idProd" value="${x.id}">
-                <h2 class="card-title" id="${x.id}">${x.nombre}</h2>
-                <h5 class="card-subtitle mb-2 text-muted">${x.descripcion}</h5>
-                <p class="card-text">$ ${x.precio}</p>
-                <div class="btn-group" role="group" aria-label="Basic mixed styles example">            
-                    <button type="button" class="btn btn-success" id="btn${x.id}" onclick="agregarCarrito(${x.id})">Agregar</button>
+            <div class="card text-center" style="width: 18rem;">
+                <img src="./multimedia/${x.imagen}" class="card-img-top" id="imagen" alt="Img Not found">
+                <div class="card-body">
+                    <input type="hidden" id="idProd" value="${x.id}">
+                    <h2 class="card-title" id="${x.id}">${x.nombre}</h2>
+                    <h5 class="card-subtitle mb-2 text-muted">${x.descripcion}</h5>
+                    <p class="card-text">$ ${x.precio}</p>
+                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">            
+                        <button type="button" class="btn btn-success" id="btn${x.id}" onclick="agregarCarrito(${x.id})">Agregar</button>
+                    </div>
                 </div>
             </div>
-        </div>
         `);
     }
 }
+
 const prodEncontrado = (x) => {
     $('#cuerpo').append(`
         <div class="card text-center" style="width: 18rem;">
@@ -100,13 +102,13 @@ const borrarHTML = () => {
 let agregarCarro = [];
 
 const agregarCarrito = (idProd) => {
-    agregarCarro.push(arrayProductos[idProd]); 
-    console.log(agregarCarro);
-    sessionStorage.setItem('id', agregarCarro);
+    agregarCarro.push(arrayProductos[idProd]);
+    localStorage.setItem("carrito", JSON.stringify(agregarCarro));
+    //console.log(agregarCarro);
 }
 
-const carrito = ()=>{
-    for(let i = 0; i < sessionStorage.length; i++){
+/* const carrito = ()=>{
+    for(let i = 0; i < localStorage.length; i++){
         $('#cuerpo').append(`
         <div class="card text-center" style="width: 18rem;">
             <img src="./multimedia/${i.imagen}" class="card-img-top" id="imagen" alt="Img Not found">
@@ -119,4 +121,32 @@ const carrito = ()=>{
         </div>
         `);
     }
-}
+} */
+
+total = 0;
+
+$(document).ready(function () {
+    $("#carro").click(function (e) {
+        let obtenerProductos = JSON.parse(localStorage.getItem(agregarCarro))
+        for (const producto of obtenerProductos) {
+            total += parseFloat(producto.precio);
+            //Por cada producto además de los datos agregamos un botón 
+            $('#carrito').append(`
+                <div class="card text-center" style="width: 18rem;">
+                    <img src="./multimedia/${producto.imagen}" class="card-img-top" id="imagen" alt="Img Not found">
+                    <div class="card-body">
+                        <input type="hidden" id="idProd" value="${producto.id}">
+                        <h2 class="card-title" id="${producto.id}">${producto.nombre}</h2>
+                        <h5 class="card-subtitle mb-2 text-muted">${producto.descripcion}</h5>
+                        <p class="card-text">$ ${producto.precio}</p>
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">            
+                            <button type="button" class="btn btn-success" id="btn${producto.id}" onclick="agregarCarrito(${producto.id})">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+            `);
+        }
+        console.log(total)
+        $("#carrito").append(`<p>Precio final: $${total}</p>`)
+    });
+});

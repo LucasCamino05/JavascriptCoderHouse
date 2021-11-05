@@ -13,10 +13,9 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly; }
-  header .card {
-    height: fit-content; }
-    header .card img {
-      object-fit: cover; }
+  header .card img {
+    height: 15rem;
+    object-fit: cover; }
 
 .footer {
   position: fixed;
