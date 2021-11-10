@@ -1,18 +1,37 @@
-/* let boton = document.getElementById("btnFiltrar");
-
+//let perro = JSON.parse(data);
+let boton = document.getElementById("btnFiltrar");
+let arrayProductos = [];
+/* 
+const fetchData = async () => {
+    //console.log('entro aca');
+    try {
+        const res = await fetch('datos.json')
+        const data = await res.json();
+        for (x of data){
+            //console.log(x);
+            arrayProductos.push(x);
+            //console.log("Aca hago algo");
+        }
+        //console.log(data)
+    } 
+    catch (error) {
+        console.log(error)
+    }
+}
+ */
 boton.onclick = () => {
     borrarHTML();
     filtroProductos();
-} */
+}
 
 //let btnAgregar = $('#agregar'); //Agregaria el producto al carrito, o almenos cambiaria el nro del carrito.
+
 /* btnAgregar.onclick = () => {
     agregarBtn();
 } */
 
 // Al clickear el boton añadir un objeto a un carrito y aumentar el valor del total a pagar.
 
-let arrayProductos = [];
 
 class productos{
     constructor(id,nombre,stock,precio,imagen,descripcion){
@@ -31,6 +50,7 @@ class productos{
     }
 }
 
+
 // en un futuro se borra todo.
 
 arrayProductos.push(new productos (0, "Arroz", 100, 60, "arroz.jpg","arroz en grano, peso neto 1kg. pepe"));
@@ -39,27 +59,67 @@ arrayProductos.push(new productos (2, "Lentejas", 10, 150,"lentejas.jpg","lentej
 arrayProductos.push(new productos (3, "Porotos", 10, 140,"porotos.jpg","porotos por kg"));
 arrayProductos.push(new productos (4, "Salsa Tomate", 50, 90,"salsaTomate.jpg","Caja salsa de tomate, peso 520gr"));
 arrayProductos.push(new productos (5, "Papa", 15, 75,"papa.jpg","papas Fritas Lays, peso 226.6gr"));
+arrayProductos.push(new productos (6, "Lentejas", 10, 150,"lentejas.jpg","lentejas kg"));
+arrayProductos.push(new productos (7, "Porotos", 10, 140,"porotos.jpg","porotos por kg"));
+arrayProductos.push(new productos (8, "Salsa Tomate", 50, 90,"salsaTomate.jpg","Caja salsa de tomate, peso 520gr"));
+arrayProductos.push(new productos (9, "Papa", 15, 75,"papa.jpg","papas Fritas Lays, peso 226.6gr")); 
+
 
 /* HTML Agregado con DOM y jQuery */
 
-const mostrarStock = () => {
-    for (let x of arrayProductos){
-        $('#cuerpo').append(`
-            <div class="card text-center" style="width: 18rem;">
-                <img src="./multimedia/${x.imagen}" class="card-img-top" id="imagen" alt="Img Not found">
-                <div class="card-body">
-                    <input type="hidden" id="idProd" value="${x.id}">
-                    <h2 class="card-title" id="${x.id}">${x.nombre}</h2>
-                    <h5 class="card-subtitle mb-2 text-muted">${x.descripcion}</h5>
-                    <p class="card-text">$ ${x.precio}</p>
-                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">            
-                        <button type="button" class="btn btn-success" id="btn${x.id}" onclick="agregarCarrito(${x.id})">Agregar</button>
+/* console.log(arrayProductos); */
+/* $(document).ready(
+    function mostrarStock(){
+        for (x of arrayProductos){
+            $('#cuerpo').append(`
+                <div class="card text-center" style="width: 18rem;">
+                    <img src="./multimedia/${x.imagen}" class="card-img-top" id="imagen" alt="Img Not found">
+                    <div class="card-body">
+                        <input type="hidden" id="idProd" value="${x.id}">
+                        <h2 class="card-title" id="">Hola</h2>
+                        <h5 class="card-subtitle mb-2 text-muted">asdasad</h5>
+                        <p class="card-text">$ dasdasdadas</p>
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">            
+                            <button type="button" class="btn btn-success" id="btn" onclick="agregarCarrito(${arrayProductos[x].id})">Agregar</button>
+                        </div>
+                    </div>
+                </div>      
+            `)
+        }
+    }
+) */
+
+$(document).ready(
+    function mostrarStock(){
+        for (let x of arrayProductos){
+            $('#cuerpo').append(`
+                <div class="card text-center" style="width: 18rem;">
+                    <img src="./multimedia/${x.imagen}" class="card-img-top" id="imagen" alt="Img Not found">
+                    <div class="card-body">
+                        <input type="hidden" id="idProd" value="${x.id}">
+                        <h2 class="card-title" id="${x.id}">${x.nombre}</h2>
+                        <h5 class="card-subtitle mb-2 text-muted">${x.descripcion}</h5>
+                        <p class="card-text">$ ${x.precio}</p>
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">            
+                            <button type="button" class="btn btn-success" id="btn${x.id}" onclick="agregarCarrito(${x.id})">Agregar</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        `);
+            `);
+        }
     }
-}
+)
+
+$(document).ready(
+    ()=> {
+        $("#cuerpo").slideDown('slow');
+/*         $("#cuerpo").fadeIn('slow'); */
+    }
+)
+
+/* $(document).ready(()=>{
+    $("#cuerpo").fadeIn('3000');
+}) */
 
 const prodEncontrado = (x) => {
     $('#cuerpo').append(`
@@ -74,7 +134,7 @@ const prodEncontrado = (x) => {
                 </div>
             </div>
         </div>
-        `);
+    `);
 }
 
 const filtroProductos = () => {
@@ -122,31 +182,3 @@ const agregarCarrito = (idProd) => {
         `);
     }
 } */
-
-total = 0;
-
-$(document).ready(function () {
-    $("#carro").click(function (e) {
-        let obtenerProductos = JSON.parse(localStorage.getItem(agregarCarro))
-        for (const producto of obtenerProductos) {
-            total += parseFloat(producto.precio);
-            //Por cada producto además de los datos agregamos un botón 
-            $('#carrito').append(`
-                <div class="card text-center" style="width: 18rem;">
-                    <img src="./multimedia/${producto.imagen}" class="card-img-top" id="imagen" alt="Img Not found">
-                    <div class="card-body">
-                        <input type="hidden" id="idProd" value="${producto.id}">
-                        <h2 class="card-title" id="${producto.id}">${producto.nombre}</h2>
-                        <h5 class="card-subtitle mb-2 text-muted">${producto.descripcion}</h5>
-                        <p class="card-text">$ ${producto.precio}</p>
-                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">            
-                            <button type="button" class="btn btn-success" id="btn${producto.id}" onclick="agregarCarrito(${producto.id})">Agregar</button>
-                        </div>
-                    </div>
-                </div>
-            `);
-        }
-        console.log(total)
-        $("#carrito").append(`<p>Precio final: $${total}</p>`)
-    });
-});
