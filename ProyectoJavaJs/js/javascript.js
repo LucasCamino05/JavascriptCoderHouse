@@ -1,24 +1,26 @@
 //let perro = JSON.parse(data);
 let boton = document.getElementById("btnFiltrar");
 let arrayProductos = [];
-/* 
+let agregarCarro = [];
+ 
 const fetchData = async () => {
     //console.log('entro aca');
     try {
-        const res = await fetch('datos.json')
+        const res = await fetch('datos.json');
         const data = await res.json();
         for (x of data){
             //console.log(x);
             arrayProductos.push(x);
             //console.log("Aca hago algo");
+            //console.log(arrayProductos)
         }
         //console.log(data)
-    } 
+    }
     catch (error) {
         console.log(error)
     }
 }
- */
+
 boton.onclick = () => {
     borrarHTML();
     filtroProductos();
@@ -32,8 +34,7 @@ boton.onclick = () => {
 
 // Al clickear el boton añadir un objeto a un carrito y aumentar el valor del total a pagar.
 
-
-class productos{
+/* class productos{
     constructor(id,nombre,stock,precio,imagen,descripcion){
         this.id = id;
         this.nombre = nombre;
@@ -48,12 +49,11 @@ class productos{
     vender(cantidad){
         this.stock = this.stock - cantidad;
     }
-}
-
+} */
 
 // en un futuro se borra todo.
 
-arrayProductos.push(new productos (0, "Arroz", 100, 60, "arroz.jpg","arroz en grano, peso neto 1kg. pepe"));
+/* arrayProductos.push(new productos (0, "Arroz", 100, 60, "arroz.jpg","arroz en grano, peso neto 1kg. pepe"));
 arrayProductos.push(new productos (1, "Fideos", 100, 80,"fideos.jpg","Paquete de fideos tallarines de 500gr, pepe"));
 arrayProductos.push(new productos (2, "Lentejas", 10, 150,"lentejas.jpg","lentejas kg"));
 arrayProductos.push(new productos (3, "Porotos", 10, 140,"porotos.jpg","porotos por kg"));
@@ -63,11 +63,12 @@ arrayProductos.push(new productos (6, "Lentejas", 10, 150,"lentejas.jpg","lentej
 arrayProductos.push(new productos (7, "Porotos", 10, 140,"porotos.jpg","porotos por kg"));
 arrayProductos.push(new productos (8, "Salsa Tomate", 50, 90,"salsaTomate.jpg","Caja salsa de tomate, peso 520gr"));
 arrayProductos.push(new productos (9, "Papa", 15, 75,"papa.jpg","papas Fritas Lays, peso 226.6gr")); 
-
+ */
 
 /* HTML Agregado con DOM y jQuery */
 
-/* console.log(arrayProductos); */
+//console.log(arrayProductos);
+
 /* $(document).ready(
     function mostrarStock(){
         for (x of arrayProductos){
@@ -89,31 +90,35 @@ arrayProductos.push(new productos (9, "Papa", 15, 75,"papa.jpg","papas Fritas La
     }
 ) */
 
-$(document).ready(
-    function mostrarStock(){
-        for (let x of arrayProductos){
-            $('#cuerpo').append(`
-                <div class="card text-center" style="width: 18rem;">
-                    <img src="./multimedia/${x.imagen}" class="card-img-top" id="imagen" alt="Img Not found">
-                    <div class="card-body">
-                        <input type="hidden" id="idProd" value="${x.id}">
-                        <h2 class="card-title" id="${x.id}">${x.nombre}</h2>
-                        <h5 class="card-subtitle mb-2 text-muted">${x.descripcion}</h5>
-                        <p class="card-text">$ ${x.precio}</p>
-                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">            
-                            <button type="button" class="btn btn-success" id="btn${x.id}" onclick="agregarCarrito(${x.id})">Agregar</button>
-                        </div>
+const mostrarStock = async ()=> {
+    await fetchData();
+    for (let x of arrayProductos){
+        $('#cuerpo').append(`
+            <div class="card text-center" style="width: 18rem;">
+                <img src="./multimedia/${x.imagen}" class="card-img-top" id="imagen" alt="Img Not found">
+                <div class="card-body">
+                    <input type="hidden" id="idProd" value="${x.id}">
+                    <h2 class="card-title" id="${x.id}">${x.nombre}</h2>
+                    <h5 class="card-subtitle mb-2 text-muted">${x.descripcion}</h5>
+                    <p class="card-text">$ ${x.precio}</p>
+                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">            
+                        <button type="button" class="btn btn-success" id="btn${x.id}" onclick="agregarCarrito(${x.id})">Agregar</button>
                     </div>
                 </div>
-            `);
-        }
+            </div>
+        `);
     }
+}
+
+$(document).ready(
+/*     setTimeout($("#cuerpo").slideDown('slow'), 5000), */ //esto hace que mi "funcion espere"
+    mostrarStock()
 )
 
 $(document).ready(
     ()=> {
         $("#cuerpo").slideDown('slow');
-/*         $("#cuerpo").fadeIn('slow'); */
+        //$("#cuerpo").fadeIn('slow');
     }
 )
 
@@ -158,8 +163,6 @@ const borrarHTML = () => {
     let header = $('#cuerpo');
     header.empty();
 }
-
-let agregarCarro = [];
 
 const agregarCarrito = (idProd) => {
     agregarCarro.push(arrayProductos[idProd]);
