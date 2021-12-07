@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav{
+    .container-fluid{
+        
+        a{
+            color: rgb(0, 0, 0);
+        }
+    }
+    i{
+        font-size: xx-large;
+    }
+}
+
+header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: rgb(255, 158, 11);
+    .card {
+        margin: 5px;
+        padding-top: 5px;
+        border: rgb(0, 0, 0) solid;
+        background-color: rgb(255, 158, 11);
+        h2{
+            text-decoration: underline;
+        }
+        h5 .card{
+            color: rgb(0, 0, 0);  
+        }
+        p .card{
+            color: rgb(0, 0, 0);
+            font-size: xx-large;
+            font-weight: bolder;
+        }
+        img{
+            height: 15.4rem;
+            object-fit: contain;
+        }
+   }
+}

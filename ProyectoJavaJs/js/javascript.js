@@ -1,5 +1,5 @@
 //let perro = JSON.parse(data);
-let boton = document.getElementById("btnFiltrar");
+let boton = document.getElementById("btnFiltrar"); //Filtrado de Items
 let arrayProductos = [];
 let agregarCarro = [];
  

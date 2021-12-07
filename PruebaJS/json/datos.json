@@ -1,0 +1,92 @@
+[   
+    {
+        "id":0,
+        "nombre": "Arroz",
+        "stock": 100,
+        "precio": 60,
+        "imagen": "arroz.png",
+        "descripcion": "Arroz Lucchetti, paquete de medio kilo, no se pasa ni se quema.",
+        "caja": 0
+    },
+    {
+        "id":1,
+        "nombre": "Fideos",
+        "stock": 100,
+        "precio": 80,
+        "imagen": "fideos.jpg",
+        "descripcion": "Fideos Lucchetti, tirabuzones, ideales para comer con salsas.",
+        "caja": 0
+    },
+    {
+        "id":2,
+        "nombre": "Lentejas",
+        "stock": 10,
+        "precio": 150,
+        "imagen": "lentejas.jpg",
+        "descripcion": "Lentejas, cantidad por unidad de 1 kg.",
+        "caja": 0
+    },
+    {   
+        "id":3,
+        "nombre": "Porotos",
+        "stock": 10,
+        "precio": 140,
+        "imagen": "porotos.png",
+        "descripcion": "Porotos, cantidad por unidad de 1 kg.",
+        "caja": 0
+    },
+    {
+        "id":4,
+        "nombre": "Salsa Tomate",
+        "stock": 50,
+        "precio": 90,
+        "imagen": "salsaTomate.png",
+        "descripcion": "Salsa de tomate, unidad con peso 520gr. Perfecta para Pizzas y Tucos.",
+        "caja": 0
+    },
+    {
+        "id":5,
+        "nombre": "Papa",
+        "stock": 15,
+        "precio": 75,
+        "imagen": "papa.jpg",
+        "descripcion": "Papas Fritas, marca Lays, peso 145gr",
+        "caja": 0
+    },
+    {
+        "id":6,
+        "nombre":"Café",
+        "stock": 5,
+        "precio":60,
+        "imagen":"cafe.jpg",
+        "descripcion":"Café Dolca. Para arrancar la mañana",
+        "caja": 0
+    },
+    {
+        "id":7,
+        "nombre": "Azucar",
+        "stock": 100,
+        "precio": 60,
+        "imagen": "azucar.jpg",
+        "descripcion": "Azucar Ledesma. Endulza tu mañanas",
+        "caja": 0
+    },
+    {
+        "id":8,
+        "nombre": "Polenta",
+        "stock": 150,
+        "precio": 80,
+        "imagen": "polenta.jpg",
+        "descripcion": "Polenta Presto Pronta, perfecto para los dias frios.",
+        "caja": 0
+    },
+    {
+        "id":9,
+        "nombre": "Yerba Mate",
+        "stock": 150,
+        "precio": 80,
+        "imagen": "mañanita.jpg",
+        "descripcion": "Yerba Mate Mañanita. Para tus mañanas, tardes y noches.",
+        "caja": 0
+    }
+]

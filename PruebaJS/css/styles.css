@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+nav .container-fluid a {
+  color: black; }
+
+nav i {
+  font-size: xx-large; }
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #ff9e0b; }
+  header .card {
+    margin: 5px;
+    padding-top: 5px;
+    border: black solid;
+    background-color: #ff9e0b; }
+    header .card h2 {
+      text-decoration: underline; }
+    header .card h5 .card {
+      color: black; }
+    header .card p .card {
+      color: black;
+      font-size: xx-large;
+      font-weight: bolder; }
+    header .card img {
+      height: 15.4rem;
+      object-fit: contain; }
