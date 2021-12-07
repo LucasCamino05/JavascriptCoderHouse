@@ -28,18 +28,39 @@ $(document).ready(() => {
         $('#cuerpo').fadeIn('5000');
     })
 });
+let numCart = 0;
 
 const agregarCarrito = (idProd) => {
     if(carrito.some(elemento => elemento == productos[idProd])){
+        $('#popOverCarrito').prepend(
+            `
+                <div id="popoverAgregar" style="display: block" style="hidden">
+                    Se sumo al carrito
+                </div>
+            `
+        )
+        $('#popoverAgregar').css('visibility','visible')
+                            .fadeOut('7200');
+        numCart = numCart + 1; 
         productos[idProd].caja = productos[idProd].caja + 1;
         //console.log(productos[idProd].caja)
     }
     else{
+        $('#popOverCarrito').prepend(
+            `
+                <div id="popoverAgregar" style="display: block" style="hidden">
+                    Se sumo al carrito
+                </div>
+            `
+        )
+        $('#popoverAgregar').css('visibility','visible')
+                            .fadeOut('7200');
+        numCart = numCart + 1;
         productos[idProd].caja = productos[idProd].caja + 1;
         carrito.push(productos[idProd]);
     }
     //carrito.push(productos[idProd]);
-    $('#carrito_cantidad').html(`${carrito.length}`);
+    $('#carrito_cantidad').html(`${numCart}`);
     //console.log(carrito);
     localStorage.setItem("carrito", JSON.stringify(carrito));
 };

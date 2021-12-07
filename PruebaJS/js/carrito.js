@@ -70,3 +70,8 @@ const btnBorrar= (idProd) => {
     localStorage.setItem("carrito",JSON.stringify(obtenerProductos)); // Cargo en el LocalStorage el Nuevo arreglo con el cambio
     location.reload(); // Recargo la pagina.
 };
+
+const pago = () => {
+    fetch('')
+    
+}

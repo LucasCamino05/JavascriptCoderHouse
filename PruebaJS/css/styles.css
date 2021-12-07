@@ -15,6 +15,15 @@ nav .container-fluid a {
 nav i {
   font-size: xx-large; }
 
+#popOverCarrito {
+  position: absolute;
+  left: 75%;
+  bottom: 92%;
+  z-index: 1;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: x-large; }
+
 header {
   display: flex;
   flex-wrap: wrap;
