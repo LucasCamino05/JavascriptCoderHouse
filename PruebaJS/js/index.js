@@ -19,7 +19,7 @@ $(document).ready(() => {
                         <h5 class="card-subtitle mb-2">${x.descripcion}</h5>
                         <p class="card-text">$ ${x.precio}</p>
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">            
-                            <button type="button" class="btn btn-outline-dark" onclick="agregarCarrito(${x.id})">Agregar</button>
+                            <button type="button" class="btn btn-success" onclick="agregarCarrito(${x.id})">Agregar</button>
                         </div>
                     </div>
                 </div>

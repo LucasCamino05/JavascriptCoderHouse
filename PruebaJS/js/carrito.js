@@ -16,7 +16,7 @@ $(document).ready(function imprimirCarrito() {
                     <p class="card-text">$ ${producto.precio}</p>
                     <p> ${producto.caja} </p>
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">            
-                        <button type="button" class="btn btn-danger" id="btnBorrar" onclick="btnBorrar('${producto.nombre}')">Eliminar</button>
+                        <button type="button" class="btn btn-dark" id="btnBorrar" onclick="btnBorrar('${producto.nombre}')">Eliminar</button>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@ $(document).ready(function imprimirCarrito() {
                 <div class="card-body">
                     <h5 class="card-title">Precio final</h5>
                     <p class="card-text">$${total}</p>
-                    <a href="#" class="btn btn-warning">Pagar</a>
+                    <a href="#" class="btn btn-success">Pagar</a>
                 </div>
             </div>
          `);
