@@ -28,6 +28,7 @@ $(document).ready(() => {
         $('#cuerpo').fadeIn('5000');
     })
 });
+
 let numCart = 0;
 
 const agregarCarrito = (idProd) => {

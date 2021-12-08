@@ -31,7 +31,7 @@ $(document).ready(function imprimirCarrito() {
                 <div class="card-body">
                     <h5 class="card-title">Precio final</h5>
                     <p class="card-text">$${total}</p>
-                    <a href="#" class="btn btn-success">Pagar</a>
+                    <button class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Pagar</button>
                 </div>
             </div>
          `);
@@ -71,7 +71,21 @@ const btnBorrar= (idProd) => {
     location.reload(); // Recargo la pagina.
 };
 
-const pago = () => {
-    fetch('')
-    
-}
+$('#pagarCompra').on('click', () => {
+    nombreApellido = $('#nombreApellido').val();
+    pinCheck = $('#pinCheck').val();
+    emailCheck = $('#emailCheck').val();
+    tarjetaCheck = $('#tarjetaCheck').val()
+    console.log(nombreApellido);
+    console.log(pinCheck);
+    console.log(emailCheck);
+    console.log(tarjetaCheck);
+    if ((nombreApellido == '') || (pinCheck == '') || (emailCheck == '') || (tarjetaCheck == '')){
+        alert('Complete Todos los campos')
+    }
+    else{
+        let obtenerProductos = [];
+        localStorage.setItem("carrito",JSON.stringify(obtenerProductos))
+        location.reload();
+    }
+})

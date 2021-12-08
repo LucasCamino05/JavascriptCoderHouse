@@ -24,6 +24,27 @@
             </form>
         </div>
     </nav>
+    <section id="completarCompra">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+                <h5 id="offcanvasRightLabel">Complete su compra</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <p>Nombre y Apellido</p>
+                <input type="text" id="nombreApellido">
+                <div class="Tarjeta">
+                    <p>email</p>
+                    <input type="email" id="emailCheck">
+                    <p>Numero de Tarjeta </p> <input type="number" id="tarjetaCheck">
+                    <p>Codigo de Seguridad</p> <input type="password" id="pinCheck">
+                </div>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-success btn-lg" id="pagarCompra">Completar Compra</button>
+            </div>
+        </div>
+    </section>
 
     <header id="carrito"></header>
 
