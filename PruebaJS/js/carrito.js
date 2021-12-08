@@ -75,11 +75,8 @@ $('#pagarCompra').on('click', () => {
     nombreApellido = $('#nombreApellido').val();
     pinCheck = $('#pinCheck').val();
     emailCheck = $('#emailCheck').val();
-    tarjetaCheck = $('#tarjetaCheck').val()
-    console.log(nombreApellido);
-    console.log(pinCheck);
-    console.log(emailCheck);
-    console.log(tarjetaCheck);
+    tarjetaCheck = $('#tarjetaCheck').val();
+    
     if ((nombreApellido == '') || (pinCheck == '') || (emailCheck == '') || (tarjetaCheck == '')){
         alert('Complete Todos los campos')
     }
